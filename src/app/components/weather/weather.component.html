@@ -3,7 +3,7 @@
     <button mat-button (click)="addCity(cityCtrl)">Add</button>
 </mat-form-field>
 
-<div *ngFor="let city of cities">
+<div class="cards" *ngFor="let city of cities">
   <mat-card>
       <mat-card-header>
           <mat-card-title>{{city.name}}, {{city.sys.country}}</mat-card-title>

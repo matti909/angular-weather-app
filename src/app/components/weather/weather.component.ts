@@ -7,13 +7,12 @@ import { WeatherService } from 'src/app/services/weather.service';
   templateUrl: './weather.component.html',
   styleUrls: ['./weather.component.scss']
 })
+
 export class WeatherComponent {
   weather: Weather | undefined
   cities: Weather[] = [];
 
   constructor(private weatherService: WeatherService) { }
-
-  
 
   addCity(cityCtrl: any) {
     const city = cityCtrl.value;
