@@ -6,6 +6,12 @@
     padding-top: 25px;
 }
 
+.cards {
+    display: grid;
+    grid-template-columns: 1fr, 1fr, 1fr;
+    gap: 4px;
+}
+
 mat-form-field {
     width: 20%;
 }

@@ -9,14 +9,27 @@ import { WeatherService } from 'src/app/services/weather.service';
 })
 export class WeatherComponent {
   weather: Weather | undefined
+  cities: Weather[] = [];
 
   constructor(private weatherService: WeatherService) { }
 
-  search(city: string) {
+  
+
+  addCity(cityCtrl: any) {
+    const city = cityCtrl.value;
     this.weatherService
       .getWeather(city)
-      .subscribe(weather => 
-        this.weather = weather);
+      .subscribe(weather => {
+        this.cities.push(weather);
+        cityCtrl.value = ''; // Limpiar el input
+      });
+  }
+
+  removeCity(city: Weather) {
+    const index = this.cities.indexOf(city);
+    if (index !== -1) {
+      this.cities.splice(index, 1);
+    }
   }
 
 }
