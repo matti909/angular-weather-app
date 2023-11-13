@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Weather } from '../interfaces/weather.interface';
 
 @Injectable({
@@ -17,10 +17,11 @@ export class WeatherService {
       .set('units', 'metric')
       .set('q', city)
       .set('appId', this.apiKey);
-    return this.http.get<Weather>(this.apiUrl + 'weather', {
-      params:
-        options
-    });
+    return this.http.get<Weather>(this.apiUrl + 'weather', { params: options })
+      .pipe(catchError((error: HttpErrorResponse) => {
+        console.error(error);
+        return throwError(() => error);
+      }))
   }
-  
+
 }
