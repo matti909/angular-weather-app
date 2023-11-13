@@ -11,6 +11,7 @@ import { WeatherService } from 'src/app/services/weather.service';
 export class WeatherComponent {
   weather: Weather | undefined
   cities: Weather[] = [];
+  todayDate = new Date()
 
   constructor(private weatherService: WeatherService) { }
 
@@ -22,6 +23,7 @@ export class WeatherComponent {
         this.cities.push(weather);
         cityCtrl.value = ''; // Limpiar el input
       });
+      console.log(this.cities)
   }
 
   removeCity(city: Weather) {

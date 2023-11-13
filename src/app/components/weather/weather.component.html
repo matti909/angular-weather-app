@@ -14,10 +14,12 @@
         <mat-card-subtitle>{{city.weather[0].main}}</mat-card-subtitle>
         <button mat-button (click)="removeCity(city)">X</button>
       </mat-card-header>
+      <hr>
       <img mat-card-image src="https://openweathermap.org/img/wn/{{city.weather[0].icon}}@2x.png"
         [alt]="city.weather[0].main">
       <mat-card-content>
         <h1>{{city.main.temp | number:'1.0-0'}} &#8451;</h1>
+        <p>Today's Report: <mat-label slot=""> <strong>{{todayDate | date: "EEE dd MMM"}}</strong> </mat-label> </p>
         <p>Pressure: {{city.main.pressure}} hPa</p>
         <p>Humidity: {{city.main.humidity}} %</p>
         <p>Wind: {{city.wind.speed}} m/s</p>
